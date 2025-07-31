@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./configs/mongodb.js";
 import userRouter from "./routes/userRoutes.js";
+import imageRouter from "./routes/imageRoutes.js";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
   res.send("API is working");
 });
 app.use("/api/user", userRouter);
+app.use("/api/image", imageRouter);
 
 connectDB().then(() => {
   app.listen(PORT, () => {
